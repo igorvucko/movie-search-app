@@ -16,6 +16,7 @@ interface MovieProps {
           alt={title}
         />
       </li>
+
     );
   };
 

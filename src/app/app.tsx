@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesContainer from "../features/movies/containers/MoviesContainer";
-import { SingleMovieContainer } from "../features/singles/containers/SingleMovieContainer";
+import { SingleMovieContainer } from "../features/singles";
 
 const App = () => {
   return (

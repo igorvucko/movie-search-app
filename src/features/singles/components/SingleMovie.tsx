@@ -1,4 +1,4 @@
-import { CastList } from './CastList';
+import { CastList } from "../../casts/components/CastList";
 import { Movie } from '../../movies/types/movieTypes';
 
 

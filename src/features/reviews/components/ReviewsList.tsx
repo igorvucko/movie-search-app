@@ -1,18 +1,19 @@
-/*import { ReviewItem } from "./ReviewItem";
+import { ReviewItem } from "..";
 
-interface Review {
-  id: string;
+interface ReviewList {
+  id: number;
   author: string;
   content: string;
 }
 
-export const ReviewsList = ({ reviews }: { reviews?: Review[] }) => {
+function ReviewsList ({ reviews }: { reviews?: ReviewList[] })  {
   if (!reviews || reviews.length === 0) {
     return <p>No reviews available.</p>;
   }
 
   return (
     <ul>
+      <h2>Reviews:</h2>
       {reviews.map((review) => (
         <ReviewItem
           key={review.id}
@@ -24,4 +25,5 @@ export const ReviewsList = ({ reviews }: { reviews?: Review[] }) => {
     </ul>
   );
 };
-*/
+
+export default ReviewsList;

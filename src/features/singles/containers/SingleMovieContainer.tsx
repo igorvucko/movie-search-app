@@ -4,13 +4,17 @@ import { fetchMovieDetails } from "../api/getSingleMovie";
 import SingleMovie from "../components/SingleMovie";
 import type { Movie } from "../../movies/types/movieTypes";
 import { Link } from "react-router-dom";
+import { getReviews } from "../../reviews/api/getReviews";
+import ReviewsList from "../../reviews/components/ReviewsList";
 
-export const SingleMovieContainer = () => {
+
+function SingleMovieContainer  ()  {
   const { id } = useParams<{ id: string }>();
 
   const [movie, setMovie] = useState<Movie | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [reviews, setReviews]=useState([]);
 
   useEffect(() => {
     if (!id) return;
@@ -20,6 +24,8 @@ export const SingleMovieContainer = () => {
       try {
         const movieData = await fetchMovieDetails(id);
         setMovie(movieData);
+        const reviewsData = await getReviews(parseInt(id));
+        setReviews(reviewsData)
       } catch (err) {
         setError("Failed to load movie details.");
       } finally {
@@ -38,7 +44,10 @@ export const SingleMovieContainer = () => {
     <div>
       <SingleMovie movie={movie} />
       <br />
+      <ReviewsList reviews={reviews} />
       <Link to="/" style={{ color: "blue" }}>Back to Movies</Link>
     </div>
   );
 };
+
+export default SingleMovieContainer;
