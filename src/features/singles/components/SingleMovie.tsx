@@ -1,5 +1,5 @@
 import { singleMovie } from "../../singles/types/singleMovieTypes";
-
+import ActorList from "./ActorList";
 
 interface SingleMovieProps {
   movie: singleMovie;
@@ -20,7 +20,7 @@ function SingleMovie({ movie }: SingleMovieProps)  {
 ? movie.genres.map((genre) => genre.name).join(", ")
           : "Unknown"}
       </p>
-
+        <ActorList actors ={movie.credits.cast} />
 
     </div>
   );
