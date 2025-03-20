@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchMovies } from "../api/getMovies";
+import { getMovies } from "../api/getMovies";
 import type { Movie } from "../types/movieTypes";
 
 interface MovieState {
@@ -17,7 +17,7 @@ const initialState: MovieState = {
 
 export const searchMovies = createAsyncThunk("movies/searchMovies", async (query: string) => {
   if (!query) return [];
-  return await fetchMovies(query);
+  return await getMovies(query);
 });
 
 const movieSlice = createSlice({

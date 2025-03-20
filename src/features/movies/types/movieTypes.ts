@@ -17,12 +17,15 @@ export interface Video {
 }
 
 export interface Movie {
+  genres(genres: any): import("react").ReactNode;
+  name: string;
   poster_path: string;
   id: number;
   title: string;
   overview: string;
   release_date: string;
   vote_average: number;
+  genre_ids:number [];
   credits: {
     cast: Actor[];
   };

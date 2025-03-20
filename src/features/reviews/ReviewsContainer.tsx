@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getReviews } from "../api/getReviews";
-import ReviewList from "../components/ReviewsList";
+import { getReviews } from "./api/getReviews";
+import ReviewList from "./components/ReviewsList";
 
 interface ReviewsContainerProps {
   movieId: number;

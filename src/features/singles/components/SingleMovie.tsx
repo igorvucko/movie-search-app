@@ -1,9 +1,8 @@
-import { CastList } from "../../casts/components/CastList";
-import { Movie } from '../../movies/types/movieTypes';
+import { singleMovie } from "../../singles/types/singleMovieTypes";
 
 
 interface SingleMovieProps {
-  movie: Movie;
+  movie: singleMovie;
 }
 
 function SingleMovie({ movie }: SingleMovieProps)  {
@@ -15,7 +14,13 @@ function SingleMovie({ movie }: SingleMovieProps)  {
       <p>{movie.overview}</p>
       <p><strong>Release Date:</strong> {movie.release_date}</p>
       <p><strong>Rating:</strong> {movie.vote_average}</p>
-      <CastList cast={movie.credits.cast} />
+      <p>
+        <strong>Genres:</strong>{" "}
+        {movie.genres.length > 0
+? movie.genres.map((genre) => genre.name).join(", ")
+          : "Unknown"}
+      </p>
+
 
     </div>
   );

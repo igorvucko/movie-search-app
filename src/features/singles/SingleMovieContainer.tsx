@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovieDetails } from "../api/getSingleMovie";
-import SingleMovie from "../components/SingleMovie";
-import type { Movie } from "../../movies/types/movieTypes";
+import { fetchMovieDetails } from "./api/getSingleMovie";
+import SingleMovie from "./components/SingleMovie";
+import type { Movie } from "../movies/types/movieTypes";
 import { Link } from "react-router-dom";
-import { getReviews } from "../../reviews/api/getReviews";
-import ReviewsList from "../../reviews/components/ReviewsList";
+import { getReviews } from "../reviews/api/getReviews";
+import ReviewsList from "../reviews/components/ReviewsList";
 
 
 function SingleMovieContainer  ()  {

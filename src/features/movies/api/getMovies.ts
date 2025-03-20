@@ -7,7 +7,7 @@ if (!API_KEY) {
   console.error("TMDB API Key is missing! Check your .env file.");
 }
 
-export const fetchMovies = async (query: string) => {
+export const getMovies = async (query: string) => {
   if (!query.trim()) return [];
 
   try {
