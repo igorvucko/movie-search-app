@@ -26,7 +26,7 @@ alt={actor.name}
             ) : (
               <span style={{ width: "50px", height: "50px", display: "inline-block", background: "#ddd", borderRadius: "50%", textAlign: "center", lineHeight: "50px" }}>No Image</span>
             )}
-            <strong>{actor.name} </strong> as {actor.character}
+            <strong>{actor.name } </strong>:    as  { actor.character}
           </li>
         ))}
       </ul>

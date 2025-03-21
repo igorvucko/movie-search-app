@@ -17,7 +17,7 @@ export interface Video {
 }
 
 export interface Movie {
-  genres(genres: any): import("react").ReactNode;
+  sortBy:string;
   name: string;
   poster_path: string;
   id: number;
@@ -26,6 +26,7 @@ export interface Movie {
   release_date: string;
   vote_average: number;
   genre_ids:number [];
+  genres: {id:number; name: string}[]
   credits: {
     cast: Actor[];
   };

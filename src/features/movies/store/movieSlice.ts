@@ -14,11 +14,13 @@ const initialState: MovieState = {
   error: null,
 };
 
-
-export const searchMovies = createAsyncThunk("movies/searchMovies", async (query: string) => {
-  if (!query) return [];
-  return await getMovies(query);
-});
+export const searchMovies = createAsyncThunk(
+  "movies/searchMovies",
+  async (query: string) => {
+    if (!query) return [];
+    return await getMovies(query);
+  }
+);
 
 const movieSlice = createSlice({
   name: "movies",

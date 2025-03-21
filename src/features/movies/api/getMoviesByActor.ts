@@ -10,7 +10,7 @@ export const getMoviesByActor = async (actorName: string) => {
       params: { api_key: API_KEY, query: actorName.trim() },
     });
 
-    // Extract movies from actors' filmography
+
     const actors = response.data.results || [];
     if (actors.length > 0 && actors[0].known_for) {
       return actors[0].known_for;
