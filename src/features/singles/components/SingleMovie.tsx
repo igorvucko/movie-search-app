@@ -1,5 +1,8 @@
 import { singleMovie } from "../../singles/types/singleMovieTypes";
 import ActorList from "./ActorList";
+import AddToListModal from "../../movieLists/components/AddToListModal";
+import { useState } from "react";
+import { Button } from "@mui/material";
 
 interface SingleMovieProps {
   movie: singleMovie;
@@ -7,6 +10,7 @@ interface SingleMovieProps {
 
 function SingleMovie({ movie }: SingleMovieProps)  {
   if (!movie) return <p>No movie details available.</p>;
+  const [openModal, setOpenModal] =useState(false);
 
   return (
     <div>
@@ -20,8 +24,18 @@ function SingleMovie({ movie }: SingleMovieProps)  {
 ? movie.genres.map((genre) => genre.name).join(", ")
           : "Unknown"}
       </p>
+      <div>
         <ActorList actors ={movie.credits.cast} />
 
+        <Button onClick={()=> setOpenModal(true)} variant ="contained">
+          Add to list
+          </Button>
+        <AddToListModal
+        movie={movie}
+        open={openModal}
+        onClose={()=>setOpenModal(false)}
+        />
+      </div>
     </div>
   );
 };
