@@ -3,6 +3,8 @@ interface MovieProps {
     title: string;
     overview: string;
     poster_Path: string;
+    vote_average:Number;
+    genres:{id:number;name:string}[];
   }
 
   function Movie({ id, title, overview, poster_Path }: MovieProps)  {

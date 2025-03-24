@@ -1,3 +1,5 @@
+import { JSX } from "react/jsx-runtime";
+
 export interface Actor {
   id: number;
   name: string;
@@ -17,6 +19,8 @@ export interface Video {
 }
 
 export interface Movie {
+  map(arg0: (id: any) => JSX.Element | null): import("react").ReactNode;
+  length: number;
   sortBy:string;
   name: string;
   poster_path: string;

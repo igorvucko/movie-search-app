@@ -1,11 +1,11 @@
-import { singleMovie } from "../../singles/types/singleMovieTypes";
 import ActorList from "./ActorList";
 import AddToListModal from "../../movieLists/components/AddToListModal";
 import { useState } from "react";
 import { Button } from "@mui/material";
+import { Movie } from "../../movies/types/movieTypes";
 
 interface SingleMovieProps {
-  movie: singleMovie;
+  movie: Movie
 }
 
 function SingleMovie({ movie }: SingleMovieProps)  {
@@ -27,7 +27,7 @@ function SingleMovie({ movie }: SingleMovieProps)  {
       <div>
         <ActorList actors ={movie.credits.cast} />
 
-        <Button onClick={()=> setOpenModal(true)} variant ="contained">
+        <Button style={{display:"flex",marginTop:"20px"}} onClick={()=> setOpenModal(true)} variant ="contained">
           Add to list
           </Button>
         <AddToListModal

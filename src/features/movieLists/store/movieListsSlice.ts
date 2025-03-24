@@ -1,10 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Movie } from "../../movies/types/movieTypes";
 
 interface MovieList {
   id: string;
   name: string;
-  movies: number[];
+  movies: Movie[];
 }
 
 interface MovieListsState {
@@ -26,23 +27,29 @@ const movieListsSlice = createSlice({
       state.lists = state.lists.filter((list) => list.id !== action.payload);
     },
     loadLists: (state, action: PayloadAction<MovieList[]>) => {
-        state.lists = action.payload;
+      state.lists = action.payload;
     },
-    addMovieToList: (state, action: PayloadAction<{ listId: string; movieId: number }>) => {
+    addMovieToList: (state, action: PayloadAction<{ listId: string; movie: Movie }>) => {
       const list = state.lists.find((l) => l.id === action.payload.listId);
-      if (list && !list.movies.includes(action.payload.movieId)) {
-        list.movies.push(action.payload.movieId);
+      if (list && !list.movies.find((m) => m.id === action.payload.movie.id)) {
+        list.movies.push(action.payload.movie);
       }
     },
     removeMovieFromList: (state, action: PayloadAction<{ listId: string; movieId: number }>) => {
       const list = state.lists.find((l) => l.id === action.payload.listId);
       if (list) {
-        list.movies = list.movies.filter((id) => id !== action.payload.movieId);
+        list.movies = list.movies.filter((m) => m.id !== action.payload.movieId);
       }
     },
   },
 });
 
-export const { createList, deleteList, addMovieToList, removeMovieFromList , loadLists} = movieListsSlice.actions;
-export default movieListsSlice.reducer;
+export const {
+  createList,
+  deleteList,
+  addMovieToList,
+  removeMovieFromList,
+  loadLists
+} = movieListsSlice.actions;
 
+export default movieListsSlice.reducer;
