@@ -12,12 +12,14 @@ export const store = configureStore({
 });
 const savedLists = localStorage.getItem('movieLists');
 if (savedLists) {
+
   store.dispatch(loadLists(JSON.parse(savedLists)));
 }
 
 
 store.subscribe(() => {
   const state = store.getState();
+  console.log("proso je save");
   localStorage.setItem('movieLists', JSON.stringify(state.movieLists.lists));
 });
 
