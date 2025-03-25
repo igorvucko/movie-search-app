@@ -3,6 +3,7 @@ import AddToListModal from "../../movieLists/components/AddToListModal";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Movie } from "../../movies/types/movieTypes";
+import RatingStarsContainer from "../../ratings/RatingsContainer";
 
 interface SingleMovieProps {
   movie: Movie
@@ -13,7 +14,7 @@ function SingleMovie({ movie }: SingleMovieProps)  {
   const [openModal, setOpenModal] =useState(false);
 
   return (
-    <div>
+    <div style={{marginLeft:"30px"}}>
       <h1>{movie.title}</h1>
       <p>{movie.overview}</p>
       <p><strong>Release Date:</strong> {movie.release_date}</p>
@@ -24,6 +25,10 @@ function SingleMovie({ movie }: SingleMovieProps)  {
 ? movie.genres.map((genre) => genre.name).join(", ")
           : "Unknown"}
       </p>
+      <div style={{marginTop:"10px"}}>
+        <p><strong>Rating :</strong></p>
+        <RatingStarsContainer movieId={movie.id} />
+      </div>
       <div>
         <ActorList actors ={movie.credits.cast} />
 
