@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createList } from '../store/movieListsSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-toastify';
 
 const CreateListForm: React.FC = () => {
   const [listName, setListName] = useState('');
@@ -11,6 +12,7 @@ const CreateListForm: React.FC = () => {
     e.preventDefault();
     if (listName.trim()) {
       dispatch(createList({ id: uuidv4(), name: listName.trim() }));
+      toast.success(`${listName} list is created!`);
       setListName('');
     }
   };

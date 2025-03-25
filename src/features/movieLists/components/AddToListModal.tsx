@@ -1,9 +1,9 @@
-
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import { addMovieToList } from "../store/movieListsSlice";
 import { Modal, Box, Typography, Button, List, ListItem } from "@mui/material";
 import { Movie } from "../../movies/types/movieTypes";
+import {toast } from "react-toastify";
 
 interface AddToListModalProps {
   movie: Movie;
@@ -17,6 +17,7 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ movie, open, onClose })
 
   const handleAddMovie = (listId: string) => {
     dispatch(addMovieToList({ listId, movie }));
+    toast.success(`${movie.title} added to list!`)
     onClose();
   };
 

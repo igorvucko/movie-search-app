@@ -6,6 +6,8 @@ import { removeMovieFromList, deleteList } from "./store/movieListsSlice";
 import CreateListForm from "./components/CreateListForm";
 import { MovieComponent } from "../movies";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 const MovieListsContainer = () => {
   const lists = useSelector((state: RootState) => state.movieLists.lists);
   const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const MovieListsContainer = () => {
               onClick={(e)=>{
                           e.stopPropagation();
                           dispatch(deleteList(list.id));
+                          toast.info(`${list.name} removed from list.`);
                         }}
                         >Delete List
                         </button>
@@ -55,9 +58,11 @@ const MovieListsContainer = () => {
                         />
                         </Link>
 
-                        <button onClick={() =>
+                        <button onClick={() =>{
                           dispatch(removeMovieFromList({ listId: list.id, movieId: movie.id }))
-                        }>
+                          toast.info(`${movie.title} removed from list.`);
+
+                        }}>
                           Remove movie
                         </button>
 

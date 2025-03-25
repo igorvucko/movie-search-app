@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { store } from "../store/store.ts";
 import Header from "../components/Header.tsx";
 import MovieListsContainer from "../features/movieLists/MovieListsContainer.tsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MoviesContainer = lazy(() => import('../features/movies/MoviesContainer.tsx'));
 const SingleMovieContainer = lazy(() => import('../features/singles/SingleMovieContainer.tsx'));
@@ -25,6 +27,7 @@ const App = () => {
       </Routes>
       </Suspense>
     </Router>
+    <ToastContainer position="bottom-center" autoClose={3000} />
     </Provider>
   );
 };

@@ -19,7 +19,9 @@ const MovieLists: React.FC = () => {
                     {list.name}
                 </h3>
                 <button onClick={() =>
-                    dispatch(deleteList(list.id))}>Delete List</button>
+                    dispatch(deleteList(list.id))}
+                    >Delete List</button>
+
             </li>
           ))}
         </ul>

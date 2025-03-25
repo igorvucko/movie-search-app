@@ -35,7 +35,9 @@ key={movie.id}
               <button
                 onClick={() =>
 dispatch(removeMovieFromList({ listId, movieId: movie.id }))
+
                 }
+
               >
                 Remove
               </button>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import AddToListModal from "../../movieLists/components/AddToListModal";
-
+import { Movie } from "../../movies/types/movieTypes";
 interface MovieItemProps {
-  movie: { id: number; title: string };
+  movie: Movie;
 }
 
 const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
