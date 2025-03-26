@@ -6,6 +6,7 @@ import type { Movie } from "../movies/types/movieTypes";
 import { Link } from "react-router-dom";
 import { getReviews } from "../reviews/api/getReviews";
 import ReviewsList from "../reviews/components/ReviewsList";
+import { Button } from "@mui/material";
 
 
 function SingleMovieContainer  ()  {
@@ -45,7 +46,12 @@ function SingleMovieContainer  ()  {
       <SingleMovie movie={movie} />
       <br />
       <ReviewsList reviews={reviews} />
-      <Link to="/" style={{ color: "blue" }}>Back to Movies</Link>
+      <Button component= {Link}
+              to="/"
+              variant="contained"
+              >Back to movies</Button>
+
+
     </div>
   );
 };

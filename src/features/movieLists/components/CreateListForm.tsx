@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { createList } from '../store/movieListsSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
+import { Button } from '@mui/material';
 
-const CreateListForm: React.FC = () => {
+ const CreateListForm: React.FC = () => {
   const [listName, setListName] = useState('');
   const dispatch = useDispatch();
 
@@ -26,7 +27,13 @@ const CreateListForm: React.FC = () => {
         placeholder="Enter list name"
         required
       />
-      <button type="submit">Create List</button>
+      <Button
+      variant='contained'
+      style={{marginLeft:"20px"}}
+      type='submit'>
+        Create List
+      </Button>
+
     </form>
   );
 };

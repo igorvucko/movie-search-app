@@ -1,6 +1,8 @@
 import React from "react";
 import { Actor } from "../types/singleMovieTypes";
 import { useState } from "react";
+import { Button } from "@mui/material";
+
 interface ActorListProps {
   actors: Actor[];
 }
@@ -19,8 +21,8 @@ const ActorList: React.FC<ActorListProps> = ({ actors }) => {
             <li key={actor.id} style={{ marginBottom: "10px", display: "flex", alignItems: "center" }}>
             {actor.profile_path ? (
               <img
-src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
-alt={actor.name}
+                src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                    alt={actor.name}
                 style={{ width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px" }}
               />
             ) : (
@@ -31,12 +33,10 @@ alt={actor.name}
         ))}
       </ul>
       {actors.length > 5 && (
-        <button
-          onClick={() => setShowAll(!showAll)}
-          style={{ marginTop: "10px", padding: "5px 10px", cursor: "pointer", border: "1px solid #000", borderRadius: "5px", backgroundColor: "#f9f9f9" }}
-        >
-          {showAll ? "Show Less" : "Read More"}
-        </button>
+        <Button variant="contained"
+              onClick={()=> setShowAll(!showAll)}>{showAll ? "Show less" : "Read more"}</Button>
+
+
       )}
     </div>
   );

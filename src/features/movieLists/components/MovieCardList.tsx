@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import { removeMovieFromList } from "../store/movieListsSlice";
 import { Movie } from "../../movies/types/movieTypes";
+import { Button } from "@mui/material";
 
 interface MovieCardListProps {
   listId: string;
@@ -32,7 +33,8 @@ key={movie.id}
               }}
             >
               <h4>{movie.title}</h4>
-              <button
+              <Button
+                color="error"
                 onClick={() =>
 dispatch(removeMovieFromList({ listId, movieId: movie.id }))
 
@@ -40,7 +42,7 @@ dispatch(removeMovieFromList({ listId, movieId: movie.id }))
 
               >
                 Remove
-              </button>
+              </Button>
             </div>
           );
         })

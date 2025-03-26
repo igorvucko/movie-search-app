@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { Movie } from "../../movies/types/movieTypes";
 import RatingStarsContainer from "../../ratings/RatingsContainer";
+import VideoContainer from "../../videos/VideosContainer";
 
 interface SingleMovieProps {
   movie: Movie
@@ -14,7 +15,8 @@ function SingleMovie({ movie }: SingleMovieProps)  {
   const [openModal, setOpenModal] =useState(false);
 
   return (
-    <div style={{marginLeft:"30px"}}>
+    <div style={{marginLeft:"30px", flex:"gap-8"}}>
+      <div>
       <h1>{movie.title}</h1>
       <p>{movie.overview}</p>
       <p><strong>Release Date:</strong> {movie.release_date}</p>
@@ -29,10 +31,12 @@ function SingleMovie({ movie }: SingleMovieProps)  {
         <p><strong>Rating :</strong></p>
         <RatingStarsContainer movieId={movie.id} />
       </div>
+      </div>
+
       <div>
         <ActorList actors ={movie.credits.cast} />
 
-        <Button style={{display:"flex",marginTop:"20px"}} onClick={()=> setOpenModal(true)} variant ="contained">
+        <Button style={{display:"flex",marginTop:"20px" , marginBottom:"20px"}} onClick={()=> setOpenModal(true)} variant ="contained">
           Add to list
           </Button>
         <AddToListModal
@@ -40,6 +44,9 @@ function SingleMovie({ movie }: SingleMovieProps)  {
         open={openModal}
         onClose={()=>setOpenModal(false)}
         />
+      </div>
+      <div >
+      <VideoContainer movieId={movie.id} />
       </div>
     </div>
   );

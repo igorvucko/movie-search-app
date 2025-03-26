@@ -7,6 +7,7 @@ import CreateListForm from "./components/CreateListForm";
 import { MovieComponent } from "../movies";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const MovieListsContainer = () => {
   const lists = useSelector((state: RootState) => state.movieLists.lists);
@@ -31,15 +32,20 @@ const MovieListsContainer = () => {
               onClick={() => toggleList(list.id)} style={{ cursor: "pointer", fontWeight: "bold", display:"flex", alignItems:"center",gap:"0.5rem" }}>
                 {list.name} {expandedList === list.id ? "▼" : "▶"}
               </div>
-              <button
-              style={{marginLeft:"auto"}}
-              onClick={(e)=>{
-                          e.stopPropagation();
-                          dispatch(deleteList(list.id));
+              <Button
+                          color="error"
+                          variant="contained"
+                          style={{marginLeft:"auto"}}
+                          onClick={(e) =>{
+                            e.stopPropagation()
+                          dispatch(deleteList(list.id))
                           toast.info(`${list.name} removed from list.`);
                         }}
-                        >Delete List
-                        </button>
+
+                          >
+                          Delete List
+                        </Button>
+
                         </div>
               {expandedList === list.id && (
                 <div className="movie-card-grid">
@@ -57,15 +63,18 @@ const MovieListsContainer = () => {
                           overview={movie.overview}
                         />
                         </Link>
-
-                        <button onClick={() =>{
+                        <Button
+                          color="error"
+                          variant="contained"
+                          style={{margin:"10px"}}
+                          onClick={() =>{
                           dispatch(removeMovieFromList({ listId: list.id, movieId: movie.id }))
                           toast.info(`${movie.title} removed from list.`);
+                        }}
 
-                        }}>
+                          >
                           Remove movie
-                        </button>
-
+                        </Button>
                       </div>
                     ))
                   ) : (

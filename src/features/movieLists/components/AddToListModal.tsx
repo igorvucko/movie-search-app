@@ -4,6 +4,7 @@ import { addMovieToList } from "../store/movieListsSlice";
 import { Modal, Box, Typography, Button, List, ListItem } from "@mui/material";
 import { Movie } from "../../movies/types/movieTypes";
 import {toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 interface AddToListModalProps {
   movie: Movie;
@@ -22,7 +23,7 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ movie, open, onClose })
   };
 
   return (
-    <Modal open={open} onClose={onClose} aria-labelledby="add-to-list-modal-title">
+    <Modal open={open} onClose={onClose} aria-labelledby="add-to-list-modal-title" style={{display:"flex"}}>
       <Box sx={{
         position: "absolute",
         top: "50%",
@@ -33,10 +34,22 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ movie, open, onClose })
         boxShadow: 24,
         p: 4,
         borderRadius: 2,
+
       }}>
-        <Typography id="add-to-list-modal-title" variant="h6">
+        <Box display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={2}>
+        <Typography id="add-to-list-modal-title" variant="h6" >
           Select a List
         </Typography>
+        <Button variant="contained"
+        style={{display:"flex"}}
+        component={Link}
+        to="/movie-lists"
+         >Create list
+         </Button>
+         </Box>
         <List>
           {lists.map((list) => (
             <ListItem key={list.id}>

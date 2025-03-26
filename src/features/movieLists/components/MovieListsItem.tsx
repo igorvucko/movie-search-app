@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddToListModal from "../../movieLists/components/AddToListModal";
+import AddToListModal from "./AddToListModal";
 import { Movie } from "../../movies/types/movieTypes";
 interface MovieItemProps {
   movie: Movie;
